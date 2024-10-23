@@ -53,11 +53,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   }, []);
 
   const getLayout = Component.getLayout ?? ((page) => <Layout>{ page }</Layout>);
-  const isUnderMaintenance = true;
+  // const isUnderMaintenance = true;
 
-  if (isUnderMaintenance) {
-    return <div>Under Maintenance</div>;
-  }
+  // if (isUnderMaintenance) {
+  //   return <div>Under Maintenance</div>;
+  // }
 
   return (
     <ChakraProvider cookies={ pageProps.cookies }>
