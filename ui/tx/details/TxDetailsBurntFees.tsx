@@ -1,5 +1,7 @@
+import { Skeleton } from '@chakra-ui/react';
 import BigNumber from 'bignumber.js';
 import React from 'react';
+import { TbCoins } from 'react-icons/tb';
 
 import type { Transaction } from 'types/api/transaction';
 
@@ -8,7 +10,6 @@ import { ZERO } from 'lib/consts';
 import { currencyUnits } from 'lib/units';
 import CurrencyValue from 'ui/shared/CurrencyValue';
 import * as DetailsInfoItem from 'ui/shared/DetailsInfoItem';
-import IconSvg from 'ui/shared/IconSvg';
 
 const rollupFeature = config.features.rollup;
 
@@ -38,10 +39,12 @@ const TxDetailsBurntFees = ({ data, isLoading }: Props) => {
           ` }
         isLoading={ isLoading }
       >
-        Burnt fees
+        Network revenue
       </DetailsInfoItem.Label>
       <DetailsInfoItem.Value>
-        <IconSvg name="flame" boxSize={ 5 } color="gray.500" isLoading={ isLoading }/>
+        <Skeleton isLoaded={ !isLoading } display="inline-block">
+          <TbCoins size={ 20 } color="gray.500"/>
+        </Skeleton>
         <CurrencyValue
           value={ value.toString() }
           currency={ currencyUnits.ether }
