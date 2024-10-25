@@ -33,7 +33,6 @@ const BlocksTableItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
   const txFees = BigNumber(data.tx_fees || 0);
 
   const separatorColor = useColorModeValue('gray.200', 'gray.700');
-  const burntFeesIconColor = useColorModeValue('gray.500', 'inherit');
 
   return (
     <Tr
@@ -117,7 +116,7 @@ const BlocksTableItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
         <Td fontSize="sm">
           <Flex alignItems="center" columnGap={ 2 }>
             <Skeleton isLoaded={ !isLoading } display="inline-block">
-              <TbCoins size={ 20 } color={ burntFeesIconColor }/>
+              <TbCoins size={ 20 } color="#718096"/>
             </Skeleton>
             <Skeleton isLoaded={ !isLoading } display="inline-block">
               { burntFees.dividedBy(WEI).toFixed(8) }
