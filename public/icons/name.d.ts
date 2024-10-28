@@ -142,6 +142,7 @@
 	| "sun"
 	| "swap"
 	| "testnet"
+	| "testnetv2"
 	| "token-placeholder"
 	| "token"
 	| "tokens"
