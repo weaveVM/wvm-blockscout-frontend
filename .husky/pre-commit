@@ -6,12 +6,13 @@ echo 🧿 Running file linter...
 npx lint-staged
 
 # format svg
-echo 🧿 Running svg formatter...
-for file in `git diff --diff-filter=ACMRT --cached --name-only | grep ".svg\$"`
-    do 
-        echo "Formatting $file" 
-        ./node_modules/.bin/svgo -q $file 
-        git add $file
-    done
+# todo: disable for now. investigate why it's failing then re-enable
+# echo 🧿 Running svg formatter...
+# for file in `git diff --diff-filter=ACMRT --cached --name-only | grep ".svg\$"`
+#     do 
+#         echo "Formatting $file" 
+#         ./node_modules/.bin/svgo -q $file 
+#         git add $file
+#     done
 
 echo ✅ All pre-commit jobs are done
