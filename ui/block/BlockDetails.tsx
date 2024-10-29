@@ -14,7 +14,6 @@ import BigNumber from 'bignumber.js';
 import capitalize from 'lodash/capitalize';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { TbCoins } from 'react-icons/tb';
 import { RotatingLines } from 'react-loader-spinner';
 import { scroller, Element } from 'react-scroll';
 
@@ -955,21 +954,132 @@ const BlockDetails = ({ query }: Props) => {
           <DetailsInfoItem.Label
             hint={ `Amount of ${
               config.chain.currency.symbol || 'native token'
-            } burned from transactions included in the block.
+            } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
+            } burned from transactions included in the block. 
+              } burned from transactions included in the block. 
               Equals Block Base Fee per Gas * Gas Used` }
             isLoading={ isPlaceholderData }
           >
-            Network revenue
+              Burnt fees
           </DetailsInfoItem.Label>
           <DetailsInfoItem.Value>
-            <Skeleton isLoaded={ !isPlaceholderData } display="inline-block">
-              <TbCoins size={ 20 } color="gray.500"/>
-            </Skeleton>
+            <IconSvg
+              name="flame"
+              boxSize={ 5 }
+              color="gray.500"
+              isLoading={ isPlaceholderData }
+            />
             <Skeleton isLoaded={ !isPlaceholderData } ml={ 2 }>
               { burntFees.dividedBy(WEI).toFixed() } { currencyUnits.ether }
             </Skeleton>
             { !txFees.isEqualTo(ZERO) && (
-              <Tooltip label="Network revenue / Txn fees * 100%">
+              <Tooltip label="Burnt fees / Txn fees * 100%">
                 <Box>
                   <Utilization
                     ml={ 4 }

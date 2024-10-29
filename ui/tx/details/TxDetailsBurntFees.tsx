@@ -5,13 +5,9 @@ import { TbCoins } from 'react-icons/tb';
 
 import type { Transaction } from 'types/api/transaction';
 
-// import config from 'configs/app';
-import { ZERO } from 'lib/consts';
 import { currencyUnits } from 'lib/units';
 import CurrencyValue from 'ui/shared/CurrencyValue';
 import * as DetailsInfoItem from 'ui/shared/DetailsInfoItem';
-
-// const rollupFeature = config.features.rollup;
 
 interface Props {
   data: Transaction;
@@ -20,15 +16,7 @@ interface Props {
 
 const TxDetailsBurntFees = ({ data, isLoading }: Props) => {
 
-  // if (config.UI.views.tx.hiddenFields?.burnt_fees || (rollupFeature.isEnabled && rollupFeature.type === 'optimistic')) {
-  //   return null;
-  // }
-
   const value = BigNumber(data.tx_burnt_fee || 0).plus(BigNumber(data.blob_gas_used || 0).multipliedBy(BigNumber(data.blob_gas_price || 0)));
-
-  if (value.isEqualTo(ZERO)) {
-    return null;
-  }
 
   return (
     <>
@@ -39,7 +27,7 @@ const TxDetailsBurntFees = ({ data, isLoading }: Props) => {
           ` }
         isLoading={ isLoading }
       >
-        Network revenue
+        Burnt fees
       </DetailsInfoItem.Label>
       <DetailsInfoItem.Value>
         <Skeleton isLoaded={ !isLoading } display="inline-block">
