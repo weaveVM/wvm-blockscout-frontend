@@ -1,7 +1,5 @@
-import { Skeleton } from '@chakra-ui/react';
 import BigNumber from 'bignumber.js';
 import React from 'react';
-import { TbCoins } from 'react-icons/tb';
 
 import type { Transaction } from 'types/api/transaction';
 
@@ -9,6 +7,7 @@ import { ZERO } from 'lib/consts';
 import { currencyUnits } from 'lib/units';
 import CurrencyValue from 'ui/shared/CurrencyValue';
 import * as DetailsInfoItem from 'ui/shared/DetailsInfoItem';
+import IconSvg from 'ui/shared/IconSvg';
 
 interface Props {
   data: Transaction;
@@ -32,7 +31,7 @@ const TxDetailsBurntFees = ({ data, isLoading }: Props) => {
           ` }
         isLoading={ isLoading }
       >
-        Network revenue
+        Burnt fees
       </DetailsInfoItem.Label>
       <DetailsInfoItem.Value>
         <Skeleton isLoaded={ !isLoading } display="inline-block">
