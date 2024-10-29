@@ -15,8 +15,11 @@ interface Props {
 }
 
 const TxDetailsBurntFees = ({ data, isLoading }: Props) => {
-
-  const value = BigNumber(data.tx_burnt_fee || 0).plus(BigNumber(data.blob_gas_used || 0).multipliedBy(BigNumber(data.blob_gas_price || 0)));
+  const value = BigNumber(data.tx_burnt_fee || 0).plus(
+    BigNumber(data.blob_gas_used || 0).multipliedBy(
+      BigNumber(data.blob_gas_price || 0),
+    ),
+  );
 
   return (
     <>
