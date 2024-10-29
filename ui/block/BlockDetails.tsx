@@ -963,7 +963,7 @@ const BlockDetails = ({ query }: Props) => {
           </DetailsInfoItem.Label>
           <DetailsInfoItem.Value>
             <Skeleton isLoaded={ !isPlaceholderData } display="inline-block">
-              <TbCoins size={ 20 } color="gray.500"/>
+              <TbCoins size={ 20 } color="#718096"/>
             </Skeleton>
             <Skeleton isLoaded={ !isPlaceholderData } ml={ 2 }>
               { burntFees.dividedBy(WEI).toFixed() } { currencyUnits.ether }

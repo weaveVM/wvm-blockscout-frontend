@@ -5,7 +5,6 @@ import { TbCoins } from 'react-icons/tb';
 
 import type { Transaction } from 'types/api/transaction';
 
-import { ZERO } from 'lib/consts';
 import { currencyUnits } from 'lib/units';
 import CurrencyValue from 'ui/shared/CurrencyValue';
 import * as DetailsInfoItem from 'ui/shared/DetailsInfoItem';
@@ -18,10 +17,6 @@ interface Props {
 const TxDetailsBurntFees = ({ data, isLoading }: Props) => {
 
   const value = BigNumber(data.tx_burnt_fee || 0).plus(BigNumber(data.blob_gas_used || 0).multipliedBy(BigNumber(data.blob_gas_price || 0)));
-
-  if (value.isEqualTo(ZERO)) {
-    return null;
-  }
 
   return (
     <>
