@@ -22,8 +22,14 @@ const TxDetailsBurntFees = ({ data, isLoading }: Props) => {
     <>
       <DetailsInfoItem.Label
         hint={ `
-            Amount of ${ currencyUnits.ether } burned for this transaction. Equals Block Base Fee per Gas * Gas Used
-            ${ data.blob_gas_price && data.blob_gas_used ? ' + Blob Gas Price * Blob Gas Used' : '' }
+            Amount of ${
+    currencyUnits.ether
+    } burned for this transaction. Equals Block Base Fee per Gas * Gas Used
+            ${
+    data.blob_gas_price && data.blob_gas_used ?
+      ' + Blob Gas Price * Blob Gas Used' :
+      ''
+    }
           ` }
         isLoading={ isLoading }
       >
