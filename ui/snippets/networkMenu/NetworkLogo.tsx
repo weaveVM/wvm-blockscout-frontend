@@ -58,7 +58,6 @@ const LogoFallback = ({
       name={ isSmall ? `${ iconPath }` : `${ logoPath }` }
       width="auto"
       height="100%"
-      color={ colorMode === 'dark' ? 'whiteAlpha.400' : 'blackAlpha.400' }
       display={ display }
     />
   );
