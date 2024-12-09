@@ -115,7 +115,7 @@ const ChartsWidgetsList = ({ filterQuery, isError, isPlaceholderData, charts, in
                   title={ chart.title.replace('ETH', 'tWVM') }
                   description={ chart.description.replace('ETH', 'tWVM') }
                   interval={ interval }
-                  units={ chart.units || undefined }
+                  units={ chart.units?.replace('ETH', 'tWVM') || undefined }
                   isPlaceholderData={ isPlaceholderData }
                   onLoadingError={ handleChartLoadingError }
                 />
