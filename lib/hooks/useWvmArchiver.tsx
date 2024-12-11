@@ -1,72 +1,45 @@
+import { useQuery } from '@tanstack/react-query';
+
 interface Props {
   address: string | undefined;
 }
 
-const wvmNetworks = [
-  {
-    archive_pool_address: '0x0000000000000000000000000000000000000000',
-    archiver_address: '0xE5e289FC97C63f64B1EC5e061d7f176e02eBE5A0',
-    backfill_address: '',
-    block_time: 2.0,
-    name: 'GOATDev',
-    network_chain_id: 48815,
-    network_rpc: 'https://goat-testnet.drpc.org',
-    start_block: 270388,
-    wvm_chain_id: 9496,
-    wvm_rpc: 'https://testnet-rpc.wvm.dev',
-  },
-  {
-    archive_pool_address: '0x0000000000000000000000000000000000000000',
-    archiver_address: '0xd730fF10Ab359Fc4C0853DF9d108b7E646e645f4',
-    backfill_address: '0x123463a4B065722E99115D6c222f267d9cABb524',
-    block_time: 9.0,
-    name: 'Metis',
-    network_chain_id: 1088,
-    network_rpc: 'https://andromeda.metis.io/?owner=1088',
-    start_block: 18897289,
-    wvm_chain_id: 9496,
-    wvm_rpc: 'https://testnet-rpc.wvm.dev',
-  },
-  {
-    archive_pool_address: '0x0000000000000000000000000000000000000000',
-    archiver_address: '0xA6dC883ea2A6acb576A933B4d38D13d6069d9fBE',
-    backfill_address: '',
-    block_time: 2.0,
-    name: 'RSS3 VSL Mainnet',
-    network_chain_id: 12553,
-    network_rpc: 'https://rpc.rss3.io',
-    start_block: 6888111,
-    wvm_chain_id: 9496,
-    wvm_rpc: 'https://testnet-rpc.wvm.dev',
-  },
-  {
-    archive_pool_address: '0x0000000000000000000000000000000000000000',
-    archiver_address: '0x2D76d7B140d078C575eAAD109168c606FE9d506C',
-    backfill_address: '0x55dA54ee977FBe734d5250F0558bc4B2FBe36b2a',
-    block_time: 0.38999998569488525,
-    name: 'SEI V2 EVM',
-    network_chain_id: 1329,
-    network_rpc: 'https://evm-rpc.sei-apis.com',
-    start_block: 111454818,
-    wvm_chain_id: 9496,
-    wvm_rpc: 'https://testnet-rpc.wvm.dev',
-  },
-  {
-    archive_pool_address: '0x0000000000000000000000000000000000000000',
-    archiver_address: '0xC3C16f324e04fC9C2D1120ee8392449a675A06E4',
-    backfill_address: '0x5e6548a22f64d43B804351208Fe93A261d9857f3',
-    block_time: 6.0,
-    name: 'Humanode',
-    network_chain_id: 5234,
-    network_rpc: 'https://explorer-rpc-http.mainnet.stages.humanode.io',
-    start_block: 10438223,
-    wvm_chain_id: 9496,
-    wvm_rpc: 'https://testnet-rpc.wvm.dev',
-  },
-];
+interface ResponseProps {
+  success: boolean;
+  data: Array<WvmNetwork>;
+}
+interface WvmNetwork {
+  archive_pool_address: string;
+  archiver_address: string;
+  backfill_address: string;
+  block_time: number;
+  name: string;
+  network_chain_id: number;
+  network_rpc: string;
+  start_block: number;
+  wvm_chain_id: number;
+  wvm_rpc: string;
+}
 
 export function useWvmArchiver({ address }: Props) {
-  const isWvmNetwork = wvmNetworks.some(
+  const { data: wvmNetworks } = useQuery({
+    queryKey: [ 'get wvm networks' ],
+    queryFn: async() => {
+      const response = await fetch(
+        'https://arweaveid-api.vercel.app/api/wvm-networks',
+      );
+
+      const data = (await response.json()) as ResponseProps;
+
+      if (data.success) {
+        return data.data;
+      }
+
+      return null;
+    },
+  });
+
+  const isWvmNetwork = wvmNetworks?.some(
     (network) =>
       network.archiver_address === address ||
       (network.backfill_address && network.backfill_address === address),
