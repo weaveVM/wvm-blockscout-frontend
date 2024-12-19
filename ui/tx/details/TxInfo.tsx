@@ -529,11 +529,11 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
           </DetailsInfoItem.Label>
           <Box display="flex" flexDir="column" gap={ 2 }>
             { txTags.map((tag: [string, string]) => (
-              <Box key={ tag[0] } display="flex" flexDir="row">
-                <Box width="120px">
+              <Box key={ tag[0] } display="flex">
+                <Box minWidth="120px" flexShrink={ 0 }>
                   <WvmTxTag tag={ tag[0] }/>
                 </Box>
-                <Text textAlign="left" wordBreak="break-word">{ tag[1] }</Text>
+                <Text flexGrow={ 1 } wordBreak="break-word">{ tag[1] }</Text>
               </Box>
             )) }
           </Box>
