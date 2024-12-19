@@ -94,9 +94,6 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
     txHash: data?.hash,
   });
 
-  // eslint-disable-next-line no-console
-  console.log('txTags', txTags);
-
   const truncateArweaveId = (address: string) => {
     const start = address.slice(0, 28);
     const end = address.slice(-4);
