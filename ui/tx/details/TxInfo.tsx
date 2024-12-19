@@ -28,6 +28,7 @@ import config from 'configs/app';
 import { WEI, WEI_IN_GWEI } from 'lib/consts';
 import { useArweaveId } from 'lib/hooks/useArweaveId';
 import { useBlobScan } from 'lib/hooks/useBlobScan';
+import { useTxTags } from 'lib/hooks/useTxTags';
 import { useWvmArchiver } from 'lib/hooks/useWvmArchiver';
 import getNetworkValidatorTitle from 'lib/networks/getNetworkValidatorTitle';
 import getConfirmationDuration from 'lib/tx/getConfirmationDuration';
@@ -50,6 +51,7 @@ import RawInputData from 'ui/shared/RawInputData';
 import BlobScanTag from 'ui/shared/statusTag/BlobScanTag';
 import TxStatus from 'ui/shared/statusTag/TxStatus';
 import WvmArchiverTag from 'ui/shared/statusTag/WvmArchiverTag';
+import WvmTxTag from 'ui/shared/statusTag/WvmTxTag';
 import TextSeparator from 'ui/shared/TextSeparator';
 import TxFeeStability from 'ui/shared/tx/TxFeeStability';
 import Utilization from 'ui/shared/Utilization/Utilization';
@@ -87,6 +89,13 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
   const { data: arweaveId } = useArweaveId({
     block: data?.block,
   });
+
+  const { data: txTags, isLoading: isTxTagsLoading } = useTxTags({
+    txHash: data?.hash,
+  });
+
+  // eslint-disable-next-line no-console
+  console.log('txTags', txTags);
 
   const truncateArweaveId = (address: string) => {
     const start = address.slice(0, 28);
@@ -509,7 +518,28 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
         <Skeleton>loading...</Skeleton>
       ) }
 
-      <DetailsInfoItemDivider/>
+      { txTags ? (
+        <>
+          <DetailsInfoItemDivider/>
+          <DetailsInfoItem.Label
+            hint="The transaction tags associated with the transaction"
+            isLoading={ isTxTagsLoading }
+          >
+            Tags
+          </DetailsInfoItem.Label>
+          <Box display="flex" flexDir="column" gap={ 2 }>
+            { txTags.map((tag: [string, string]) => (
+              <Box key={ tag[0] } display="flex">
+                <Box minWidth="120px" flexShrink={ 0 }>
+                  <WvmTxTag tag={ tag[0] }/>
+                </Box>
+                <Text flexGrow={ 1 } wordBreak="break-word">{ tag[1] }</Text>
+              </Box>
+            )) }
+          </Box>
+          <DetailsInfoItemDivider/>
+        </>
+      ) : null }
 
       <TxDetailsActions
         hash={ data.hash }
