@@ -2,12 +2,15 @@ import { theme } from '@chakra-ui/react';
 
 export const BODY_TYPEFACE = 'Spline Sans';
 export const HEADING_TYPEFACE = 'Spline Sans';
+export const MONO_TYPEFACE = 'Spline Sans Mono';
 
 const typography = {
   fonts: {
     heading: `${ HEADING_TYPEFACE }, ${ theme.fonts.heading }`,
     body: `${ BODY_TYPEFACE }, ${ theme.fonts.body }`,
+    mono: `${ MONO_TYPEFACE }, ${ theme.fonts.mono }`,
   },
+
   textStyles: {
     h2: {
       fontSize: [ '32px' ],

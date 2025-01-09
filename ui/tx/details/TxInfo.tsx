@@ -530,7 +530,18 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
                 <Box minWidth="120px" flexShrink={ 0 }>
                   <WvmTxTag tag={ tag[0] }/>
                 </Box>
-                <Text flexGrow={ 1 } wordBreak="break-word">{ tag[1] }</Text>
+                <Text
+                  color="#fff"
+                  fontSize="14px"
+                  padding="2px 5px"
+                  width="fit-content"
+                  fontWeight="normal"
+                  wordBreak="break-word"
+                  backgroundColor="#161625"
+                  fontFamily="Spline Sans Mono"
+                >
+                  { tag[1] }
+                </Text>
               </Box>
             )) }
           </Box>
