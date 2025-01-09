@@ -42,6 +42,11 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
             rel="stylesheet"
           />
+          { /* eslint-disable-next-line max-len */ }
+          <link
+            href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&family=Spline+Sans:wght@300..700&display=swap"
+            rel="stylesheet"
+          />
 
           { /* eslint-disable-next-line @next/next/no-sync-scripts */ }
           <script src="/assets/envs.js"/>
