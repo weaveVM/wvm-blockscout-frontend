@@ -12,6 +12,8 @@ import type { Transaction } from 'types/api/transaction';
 
 import config from 'configs/app';
 import { useBlobScan } from 'lib/hooks/useBlobScan';
+import { BundleV0Tag, useBundleV0 } from 'lib/hooks/useBundleV0';
+import { TestnetFaucetTag, useTestnetFaucet } from 'lib/hooks/useTestnetFaucet';
 import useTimeAgoIncrement from 'lib/hooks/useTimeAgoIncrement';
 import { useWvmArchiver } from 'lib/hooks/useWvmArchiver';
 import AddressFromTo from 'ui/shared/address/AddressFromTo';
@@ -42,7 +44,9 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
   const timeAgo = useTimeAgoIncrement(tx.timestamp, enableTimeIncrement);
 
   const isBlobScan = useBlobScan({ address: tx.from.hash });
+  const isBundleV0 = useBundleV0({ address: tx.to?.hash });
   const isWvmArchiver = useWvmArchiver({ address: tx.from.hash });
+  const isTestnetFaucet = useTestnetFaucet({ address: tx.from.hash });
 
   return (
     <Tr
@@ -79,6 +83,8 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
 
             { isWvmArchiver && <WvmArchiverTag/> }
             { isBlobScan && <BlobScanTag/> }
+            { isBundleV0 && <BundleV0Tag/> }
+            { isTestnetFaucet && <TestnetFaucetTag/> }
           </HStack>
           <TxStatus status={ tx.status } errorText={ tx.status === 'error' ? tx.result : undefined } isLoading={ isLoading }/>
           <TxWatchListTags tx={ tx } isLoading={ isLoading }/>
