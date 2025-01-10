@@ -23,7 +23,7 @@ export const BundleV0Tag = () => {
 };
 
 export const useBundleV0 = ({ address }: Props) => {
-  const isBundleV0 = address === '0x40Ec5025f155149d4E6BfE39F297c9092A877713';
+  const isBundleV0 = address === '0xbabe1d25501157043c7b4ea7CBC877B9B4D8A057';
 
   return isBundleV0;
 };

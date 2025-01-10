@@ -40,7 +40,7 @@ type Props = {
 
 const TxsListItem = ({ tx, isLoading, showBlockInfo, currentAddress, enableTimeIncrement }: Props) => {
   const isBlobScan = useBlobScan({ address: tx.from.hash });
-  const isBundleV0 = useBundleV0({ address: tx.from.hash });
+  const isBundleV0 = useBundleV0({ address: tx.to?.hash });
   const isWvmArchiver = useWvmArchiver({ address: tx.from.hash });
   const isTestnetFaucet = useTestnetFaucet({ address: tx.from.hash });
   const dataTo = tx.to ? tx.to : tx.created_contract;

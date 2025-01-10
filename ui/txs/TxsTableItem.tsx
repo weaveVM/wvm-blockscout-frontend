@@ -44,7 +44,7 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
   const timeAgo = useTimeAgoIncrement(tx.timestamp, enableTimeIncrement);
 
   const isBlobScan = useBlobScan({ address: tx.from.hash });
-  const isBundleV0 = useBundleV0({ address: tx.from.hash });
+  const isBundleV0 = useBundleV0({ address: tx.to?.hash });
   const isWvmArchiver = useWvmArchiver({ address: tx.from.hash });
   const isTestnetFaucet = useTestnetFaucet({ address: tx.from.hash });
 

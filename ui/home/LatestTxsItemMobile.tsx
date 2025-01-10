@@ -33,7 +33,7 @@ type Props = {
 }
 
 const LatestTxsItem = ({ tx, isLoading }: Props) => {
-  const isBundleV0 = useBundleV0({ address: tx.from.hash });
+  const isBundleV0 = useBundleV0({ address: tx.to?.hash });
   const isTestnetFaucet = useTestnetFaucet({ address: tx.from.hash });
   const isWvmArchiver = useWvmArchiver({ address: tx.from.hash });
   const isBlobScan = useBlobScan({ address: tx.from.hash });
