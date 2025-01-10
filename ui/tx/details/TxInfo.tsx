@@ -555,6 +555,8 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
         isTxDataLoading={ isLoading }
       />
 
+      { !txTags && <DetailsInfoItemDivider/> }
+
       <DetailsInfoItem.Label
         hint="Address (external or contract) sending the transaction"
         isLoading={ isLoading }
