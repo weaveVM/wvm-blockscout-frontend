@@ -404,7 +404,7 @@ const BlockDetails = ({ query }: Props) => {
       { arweaveId ? (
         <>
           <DetailsInfoItem.Label
-            hint="The Arweave TXID of the WeaveVM block's data"
+            hint="The Arweave TXID of the Load Network block's data"
             isLoading={ isLoading }
           >
             Block archive proof
@@ -420,7 +420,7 @@ const BlockDetails = ({ query }: Props) => {
             />
             { arweaveId === 'block_not_archived_or_backfilled' ? (
               <>
-                <Text color={ colorMode === 'dark' ? '#1AFFB1' : '#00B774' } marginLeft="5px" marginRight="12px">Pending </Text>
+                <Text color={ colorMode === 'dark' ? '#006eff' : '#0058CC' } marginLeft="5px" marginRight="12px">Pending </Text>
 
                 <RotatingLines
                   strokeColor="grey"
@@ -436,7 +436,7 @@ const BlockDetails = ({ query }: Props) => {
                   isExternal
                   href={ `https://arweave.net/${ arweaveId }` }
                   rel="noopener noreferrer"
-                  color={ colorMode === 'dark' ? '#1AFFB1' : '#00B774' }
+                  color={ colorMode === 'dark' ? '#006eff' : '#0058CC' }
                   marginLeft="3px"
                 >
                   <EntityBase.Content text={ isSmallDevice ? truncateArweaveId(arweaveId) : arweaveId }/>

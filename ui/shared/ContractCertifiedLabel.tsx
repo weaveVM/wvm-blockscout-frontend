@@ -12,7 +12,7 @@ const ContractCertifiedLabel = ({ iconSize, className }: Props) => {
   return (
     <Tooltip label="This contract has been certified by the chain developers">
       <Box className={ className }>
-        <IconSvg name="certified" color="green.500" boxSize={ iconSize } cursor="pointer"/>
+        <IconSvg name="certified" color="blue.500" boxSize={ iconSize } cursor="pointer"/>
       </Box>
     </Tooltip>
   );

@@ -1,8 +1,8 @@
 [   
 	{
-		"title": "Testnet WeaveVM",
+		"title": "Testnet Load Network",
 		"url": "https://explorer.wvm.dev/",
 		"group": "Testnets",
-		"icon": "https://raw.githubusercontent.com/weaveVM/wvm-blockscout-frontend/main/icons/networks/wvm-icon-dark.svg"
+		"icon": "https://raw.githubusercontent.com/weaveVM/wvm-blockscout-frontend/main/icons/networks/logo-bright.svg"
 	}
 ]

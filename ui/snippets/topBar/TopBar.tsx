@@ -28,7 +28,7 @@ const TopBar = () => {
             <Divider mr={ 3 } ml={{ base: 2, sm: 3 }} height={ 4 } orientation="vertical"/>
           </>
         ) }
-        <Settings/>
+        { config.features.account.isEnabled && <Settings/> }
       </Flex>
     </Flex>
   );

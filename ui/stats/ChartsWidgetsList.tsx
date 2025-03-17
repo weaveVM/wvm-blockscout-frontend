@@ -112,10 +112,10 @@ const ChartsWidgetsList = ({ filterQuery, isError, isPlaceholderData, charts, in
                 <ChartWidgetContainer
                   key={ chart.id }
                   id={ chart.id }
-                  title={ chart.title.replace('ETH', 'tWVM') }
-                  description={ chart.description.replace('ETH', 'tWVM') }
+                  title={ chart.title.replace('ETH', 'LOAD') }
+                  description={ chart.description.replace('ETH', 'LOAD') }
                   interval={ interval }
-                  units={ chart.units?.replace('ETH', 'tWVM') || undefined }
+                  units={ chart.units?.replace('ETH', 'LOAD') || undefined }
                   isPlaceholderData={ isPlaceholderData }
                   onLoadingError={ handleChartLoadingError }
                 />
@@ -144,7 +144,7 @@ const ChartsWidgetsList = ({ filterQuery, isError, isPlaceholderData, charts, in
             minH="230px"
             items={ formattedTvdaData }
             title="Total Value of Data Archived"
-            description="Total Value of Data Archived which is the running FDV of all chains that use WeaveVM for ledger storage"
+            description="Total Value of Data Archived which is the running FDV of all chains that use Load Network for ledger storage"
             isLoading={ isTvdaLoading }
           />
         </Grid>

@@ -16,7 +16,7 @@ interface Props {
 
 const SearchBarSuggestToken = ({ data, isMobile, searchTerm }: Props) => {
   const icon = <TokenEntity.Icon token={{ ...data, type: data.token_type }}/>;
-  const verifiedIcon = <IconSvg name="certified" boxSize={ 4 } color="green.500" ml={ 1 }/>;
+  const verifiedIcon = <IconSvg name="certified" boxSize={ 4 } color="blue.500" ml={ 1 }/>;
   const name = (
     <Text
       fontWeight={ 700 }
@@ -34,7 +34,7 @@ const SearchBarSuggestToken = ({ data, isMobile, searchTerm }: Props) => {
     </Text>
   );
 
-  const contractVerifiedIcon = data.is_smart_contract_verified && <IconSvg name="status/success" boxSize="14px" color="green.500" ml={ 1 } flexShrink={ 0 }/>;
+  const contractVerifiedIcon = data.is_smart_contract_verified && <IconSvg name="status/success" boxSize="14px" color="blue.500" ml={ 1 } flexShrink={ 0 }/>;
   const additionalInfo = (
     <Text overflow="hidden" whiteSpace="nowrap" fontWeight={ 700 }>
       { data.token_type === 'ERC-20' && data.exchange_rate && `$${ Number(data.exchange_rate).toLocaleString() }` }

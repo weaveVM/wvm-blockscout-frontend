@@ -15,7 +15,7 @@ const WvmArchiverTag = () => {
         padding="2px 5px"
       >
         <IconSvg name="gear_slim" boxSize={ 2.5 } mr={ 1 } flexShrink={ 0 }/>
-        <TagLabel display="block">wvm-archiver</TagLabel>
+        <TagLabel display="block">load-archiver</TagLabel>
       </Tag>
     </Tooltip>
   );

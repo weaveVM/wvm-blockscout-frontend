@@ -458,7 +458,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
       { arweaveId ? (
         <>
           <DetailsInfoItem.Label
-            hint="The Arweave TXID of the WeaveVM block"
+            hint="The Arweave TXID of the Load Network block"
             isLoading={ isLoading }
           >
             Block archive proof
@@ -475,7 +475,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
             { arweaveId === 'block_not_archived_or_backfilled' ? (
               <>
                 <Text
-                  color={ colorMode === 'dark' ? '#1AFFB1' : '#00B774' }
+                  color={ colorMode === 'dark' ? '#006eff' : '#0058CC' }
                   marginLeft="5px"
                   marginRight="12px"
                 >
@@ -496,7 +496,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
                   isExternal
                   href={ `https://arweave.net/${ arweaveId }` }
                   rel="noopener noreferrer"
-                  color={ colorMode === 'dark' ? '#1AFFB1' : '#00B774' }
+                  color={ colorMode === 'dark' ? '#006eff' : '#0058CC' }
                   marginLeft="5px"
                 >
                   <EntityBase.Content

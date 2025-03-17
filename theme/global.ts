@@ -13,7 +13,7 @@ const global = (props: StyleFunctionProps) => ({
     'fontVariantLigatures': 'no-contextual',
   },
   mark: {
-    bgColor: mode('green.100', 'green.800')(props),
+    bgColor: mode('blue.100', 'blue.800')(props),
     color: 'inherit',
   },
   'svg *::selection': {
