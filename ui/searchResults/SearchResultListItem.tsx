@@ -70,7 +70,7 @@ const SearchResultListItem = ({ data, searchTerm, isLoading }: Props) => {
                 textOverflow="ellipsis"
               />
             </LinkInternal>
-            { data.is_verified_via_admin_panel && <IconSvg name="certified" boxSize={ 4 } ml={ 1 } color="green.500"/> }
+            { data.is_verified_via_admin_panel && <IconSvg name="certified" boxSize={ 4 } ml={ 1 } color="blue.500"/> }
           </Flex>
         );
       }
@@ -284,7 +284,7 @@ const SearchResultListItem = ({ data, searchTerm, isLoading }: Props) => {
               <Text whiteSpace="nowrap" overflow="hidden">
                 <HashStringShortenDynamic hash={ data.address } isTooltipDisabled/>
               </Text>
-              { data.is_smart_contract_verified && <IconSvg name="status/success" boxSize="14px" color="green.500" ml={ 1 } flexShrink={ 0 }/> }
+              { data.is_smart_contract_verified && <IconSvg name="status/success" boxSize="14px" color="blue.500" ml={ 1 } flexShrink={ 0 }/> }
             </Skeleton>
             <Skeleton isLoaded={ !isLoading } overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis" fontWeight={ 700 }>
               { data.token_type === 'ERC-20' && data.exchange_rate && `$${ Number(data.exchange_rate).toLocaleString() }` }
@@ -321,7 +321,7 @@ const SearchResultListItem = ({ data, searchTerm, isLoading }: Props) => {
             <Box overflow="hidden">
               <HashStringShortenDynamic hash={ data.address }/>
             </Box>
-            { data.is_smart_contract_verified && <IconSvg name="status/success" boxSize="14px" color="green.500" ml={ 1 } flexShrink={ 0 }/> }
+            { data.is_smart_contract_verified && <IconSvg name="status/success" boxSize="14px" color="blue.500" ml={ 1 } flexShrink={ 0 }/> }
           </Flex>
         );
       }

@@ -19,6 +19,7 @@ const Home = () => {
     <Box as="main">
       <Box
         w="100%"
+        rounded="none"
         background={ config.UI.homepage.plate.background }
         borderRadius={{ base: 'md', lg: 'xl' }}
         px={{ base: 4, lg: 10 }}

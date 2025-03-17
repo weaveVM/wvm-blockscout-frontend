@@ -13,7 +13,7 @@ const VerifiedAddressesStatus = ({ status }: Props) => {
       return <chakra.span fontWeight={ 500 }>In progress</chakra.span>;
     }
     case 'APPROVED': {
-      return <chakra.span fontWeight={ 500 } color="green.500">Approved</chakra.span>;
+      return <chakra.span fontWeight={ 500 } color="blue.500">Approved</chakra.span>;
     }
     case 'UPDATE_REQUIRED': {
       return <chakra.span fontWeight={ 500 } color="orange.500">Waiting for update</chakra.span>;

@@ -47,8 +47,8 @@ const Footer = () => {
     {
       icon: 'globe' as const,
       iconSize: '24px',
-      text: 'WeaveVM Website',
-      url: 'https://wvm.dev',
+      text: 'Load Network Website',
+      url: 'https://load.network',
     },
     {
       icon: 'social/git' as const,
@@ -60,7 +60,7 @@ const Footer = () => {
       icon: 'social/twitter' as const,
       iconSize: '18px',
       text: 'X (ex-Twitter)',
-      url: 'https://x.com/weavevm',
+      url: 'https://x.com/useload',
     },
     {
       icon: 'social/discord' as const,
@@ -72,7 +72,7 @@ const Footer = () => {
       icon: 'docs' as const,
       iconSize: '20px',
       text: 'Docs',
-      url: 'https://docs.wvm.dev',
+      url: 'https://docs.load.network',
     },
   ];
 
@@ -140,12 +140,11 @@ const Footer = () => {
     (gridArea?: GridProps['gridArea']) => {
       return (
         <Box gridArea={ gridArea }>
-          <Link fontSize="xs" href="https://www.wvm.dev">
-            wvm.dev
+          <Link fontSize="xs" href="https://www.load.network">
+            load.network
           </Link>
           <Text mt={ 3 } fontSize="xs">
-            WeaveVM is the first EVM-compatible network engineered for infinite
-            storage scalability.
+            Load Network is the onchain data center.
           </Text>
           <VStack spacing={ 1 } mt={ 6 } alignItems="start">
             { apiVersionUrl && (

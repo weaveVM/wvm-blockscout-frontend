@@ -36,7 +36,7 @@ const defaultColorTheme = (() => {
 
 // eslint-disable-next-line max-len
 const HOMEPAGE_PLATE_BACKGROUND_DEFAULT =
-  'radial-gradient(103.03% 103.03% at 0% 0%, rgba(0, 228, 146, 0.8) 0%, rgba(0, 150, 96, 0.8) 100%), var(--chakra-colors-green-700)';
+  'radial-gradient(103.03% 103.03% at 0% 0%, rgba(0, 110, 255, 0.8) 0%, rgba(0, 88, 204, 0.8) 100%), var(--chakra-colors-blue-700)';
 
 const UI = Object.freeze({
   sidebar: {
