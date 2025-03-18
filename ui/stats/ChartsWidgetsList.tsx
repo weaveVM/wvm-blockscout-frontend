@@ -112,10 +112,10 @@ const ChartsWidgetsList = ({ filterQuery, isError, isPlaceholderData, charts, in
                 <ChartWidgetContainer
                   key={ chart.id }
                   id={ chart.id }
-                  title={ chart.title.replace('ETH', 'LOAD') }
-                  description={ chart.description.replace('ETH', 'LOAD') }
+                  title={ chart.title.replace('ETH', 'tLOAD') }
+                  description={ chart.description.replace('ETH', 'tLOAD') }
                   interval={ interval }
-                  units={ chart.units?.replace('ETH', 'LOAD') || undefined }
+                  units={ chart.units?.replace('ETH', 'tLOAD') || undefined }
                   isPlaceholderData={ isPlaceholderData }
                   onLoadingError={ handleChartLoadingError }
                 />
