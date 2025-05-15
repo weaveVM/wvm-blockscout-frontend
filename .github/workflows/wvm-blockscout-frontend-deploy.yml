@@ -1,24 +1,24 @@
 name: WVM Blockscout frontend deploy
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.SERVER_USERNAME }}
-        key: ${{ secrets.SERVER_KEY }}
-        passphrase: ${{ secrets.SERVER_PASSPHRASE }}
-        script: |
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_KEY }}
+          passphrase: ${{ secrets.SERVER_PASSPHRASE }}
+          script: |
             cd /home/blockexplorer/code/wvm-blockscout-frontend
             git checkout main
             git pull origin main
             docker build --platform linux/amd64 -t frontend:local .
-            cd /home/blockexplorer/code/wvm-blockscout/docker-compose/prod
+            cd /home/blockexplorer/code/wvm-blockscout/docker-compose/load_network_prod
             docker compose up --build -d
