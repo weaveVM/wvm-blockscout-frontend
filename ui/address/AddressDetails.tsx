@@ -5,6 +5,7 @@ import React from 'react';
 import config from 'configs/app';
 import throwOnResourceLoadError from 'lib/errors/throwOnResourceLoadError';
 import useArweaveAddress from 'lib/hooks/useArweaveAddress';
+import { useCustomAddressLabels } from 'lib/hooks/useCustomAddressLabels';
 import useIsMounted from 'lib/hooks/useIsMounted';
 import getQueryParamString from 'lib/router/getQueryParamString';
 import AddressCounterItem from 'ui/address/details/AddressCounterItem';
@@ -16,6 +17,7 @@ import DetailsSponsoredItem from 'ui/shared/DetailsSponsoredItem';
 import AddressEntity from 'ui/shared/entities/address/AddressEntity';
 import * as EntityBase from 'ui/shared/entities/base/components';
 import BlockEntity from 'ui/shared/entities/block/BlockEntity';
+import CustomAddressTag from 'ui/shared/statusTag/CustomAddressTag';
 import TxEntity from 'ui/shared/entities/tx/TxEntity';
 
 import AddressBalance from './details/AddressBalance';
@@ -36,6 +38,7 @@ const AddressDetails = ({ addressQuery, scrollRef }: Props) => {
   const addressHash = getQueryParamString(router.query.hash);
 
   const { arweaveAddress, ANS, isLoading: loadingArweaveAddress } = useArweaveAddress({ addressHash });
+  const customLabel = useCustomAddressLabels({ address: addressHash });
 
   const countersQuery = useAddressCountersQuery({
     hash: addressHash,
@@ -95,6 +98,24 @@ const AddressDetails = ({ addressQuery, scrollRef }: Props) => {
         templateColumns={{ base: 'minmax(0, 1fr)', lg: 'auto minmax(0, 1fr)' }} overflow="hidden"
       >
         <AddressNameInfo data={ data } isLoading={ addressQuery.isPlaceholderData }/>
+
+        { customLabel && (
+          <>
+            <DetailsInfoItem.Label
+              hint="Custom label for this address"
+              isLoading={ addressQuery.isPlaceholderData }
+            >
+              Label
+            </DetailsInfoItem.Label>
+            <DetailsInfoItem.Value>
+              <CustomAddressTag 
+                label={ customLabel.label } 
+                bgColor={ customLabel.bgColor } 
+                textColor={ customLabel.textColor }
+              />
+            </DetailsInfoItem.Value>
+          </>
+        ) }
 
         { data.is_contract && data.creation_tx_hash && data.creator_address_hash && (
           <>

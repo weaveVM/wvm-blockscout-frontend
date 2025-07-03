@@ -30,6 +30,7 @@ import { useArweaveId } from 'lib/hooks/useArweaveId';
 import { useBlobScan } from 'lib/hooks/useBlobScan';
 import { useTxTags } from 'lib/hooks/useTxTags';
 import { useWvmArchiver } from 'lib/hooks/useWvmArchiver';
+import { useCustomAddressLabels } from 'lib/hooks/useCustomAddressLabels';
 import getNetworkValidatorTitle from 'lib/networks/getNetworkValidatorTitle';
 import getConfirmationDuration from 'lib/tx/getConfirmationDuration';
 import { currencyUnits } from 'lib/units';
@@ -51,6 +52,7 @@ import RawInputData from 'ui/shared/RawInputData';
 import BlobScanTag from 'ui/shared/statusTag/BlobScanTag';
 import TxStatus from 'ui/shared/statusTag/TxStatus';
 import WvmArchiverTag from 'ui/shared/statusTag/WvmArchiverTag';
+import CustomAddressTag from 'ui/shared/statusTag/CustomAddressTag';
 import WvmTxTag from 'ui/shared/statusTag/WvmTxTag';
 import TextSeparator from 'ui/shared/TextSeparator';
 import TxFeeStability from 'ui/shared/tx/TxFeeStability';
@@ -81,6 +83,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
   const { colorMode } = useColorMode();
   const isBlobScan = useBlobScan({ address: data?.from.hash });
   const isWvmArchiver = useWvmArchiver({ address: data?.from.hash });
+  const customFromLabel = useCustomAddressLabels({ address: data?.from.hash });
   const isSmallDevice = size.width && size.width < 768;
   const wvmIconPath =
     colorMode === 'light' ? 'networks/arweave-dark' : 'networks/arweave-light';
@@ -566,6 +569,7 @@ const TxInfo = ({ data, isLoading, socketStatus }: Props) => {
       <DetailsInfoItem.Value columnGap={ 3 }>
         <AddressEntity address={ data.from } isLoading={ isLoading }/>
         { data.from.name && <Text>{ data.from.name }</Text> }
+        { customFromLabel && <CustomAddressTag label={ customFromLabel.label } bgColor={ customFromLabel.bgColor } textColor={ customFromLabel.textColor }/> }
         { addressFromTags.length > 0 && (
           <Flex columnGap={ 3 }>{ addressFromTags }</Flex>
         ) }

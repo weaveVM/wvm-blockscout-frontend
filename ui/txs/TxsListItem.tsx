@@ -14,6 +14,7 @@ import { BundleV0Tag, useBundleV0 } from 'lib/hooks/useBundleV0';
 import { TestnetFaucetTag, useTestnetFaucet } from 'lib/hooks/useTestnetFaucet';
 import useTimeAgoIncrement from 'lib/hooks/useTimeAgoIncrement';
 import { useWvmArchiver } from 'lib/hooks/useWvmArchiver';
+import { useCustomAddressLabels } from 'lib/hooks/useCustomAddressLabels';
 import { space } from 'lib/html-entities';
 import { currencyUnits } from 'lib/units';
 import AddressFromTo from 'ui/shared/address/AddressFromTo';
@@ -23,6 +24,7 @@ import ListItemMobile from 'ui/shared/ListItemMobile/ListItemMobile';
 import BlobScanTag from 'ui/shared/statusTag/BlobScanTag';
 import TxStatus from 'ui/shared/statusTag/TxStatus';
 import WvmArchiverTag from 'ui/shared/statusTag/WvmArchiverTag';
+import CustomAddressTag from 'ui/shared/statusTag/CustomAddressTag';
 import TxFeeStability from 'ui/shared/tx/TxFeeStability';
 import TxWatchListTags from 'ui/shared/tx/TxWatchListTags';
 import TxAdditionalInfo from 'ui/txs/TxAdditionalInfo';
@@ -43,7 +45,9 @@ const TxsListItem = ({ tx, isLoading, showBlockInfo, currentAddress, enableTimeI
   const isBundleV0 = useBundleV0({ address: tx.to?.hash });
   const isWvmArchiver = useWvmArchiver({ address: tx.from.hash });
   const isTestnetFaucet = useTestnetFaucet({ address: tx.from.hash });
+  const customFromLabel = useCustomAddressLabels({ address: tx.from.hash });
   const dataTo = tx.to ? tx.to : tx.created_contract;
+  const customToLabel = useCustomAddressLabels({ address: dataTo?.hash });
 
   const timeAgo = useTimeAgoIncrement(tx.timestamp, enableTimeIncrement);
 
@@ -58,6 +62,8 @@ const TxsListItem = ({ tx, isLoading, showBlockInfo, currentAddress, enableTimeI
           <TxStatus status={ tx.status } errorText={ tx.status === 'error' ? tx.result : undefined } isLoading={ isLoading }/>
           <TxWatchListTags tx={ tx } isLoading={ isLoading }/>
           { isWvmArchiver && <WvmArchiverTag/> }
+          { customFromLabel && <CustomAddressTag label={ customFromLabel.label } bgColor={ customFromLabel.bgColor } textColor={ customFromLabel.textColor }/> }
+          { customToLabel && <CustomAddressTag label={ customToLabel.label } bgColor={ customToLabel.bgColor } textColor={ customToLabel.textColor }/> }
           { isBlobScan && <BlobScanTag/> }
           { isTestnetFaucet && <TestnetFaucetTag/> }
           { isBundleV0 && <BundleV0Tag/> }
