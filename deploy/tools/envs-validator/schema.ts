@@ -658,6 +658,12 @@ const schema = yup
         ),
       }),
 
+    // S3 configuration
+    NEXT_PUBLIC_S3_REGION: yup.string(),
+    NEXT_PUBLIC_S3_ENDPOINT: yup.string().test(urlTest),
+    NEXT_PUBLIC_S3_ACCESS_KEY_ID: yup.string(),
+    NEXT_PUBLIC_S3_SECRET_ACCESS_KEY: yup.string(),
+
     // 6. External services envs
     NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID: yup.string(),
     NEXT_PUBLIC_RE_CAPTCHA_APP_SITE_KEY: yup.string(),

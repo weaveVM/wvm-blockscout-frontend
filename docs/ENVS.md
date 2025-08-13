@@ -106,6 +106,17 @@ Please be aware that all environment variables prefixed with `NEXT_PUBLIC_` will
 
 &nbsp;
 
+## S3 configuration
+
+| Variable | Type| Description | Compulsoriness  | Default value | Example value |
+| --- | --- | --- | --- | --- | --- |
+| NEXT_PUBLIC_S3_REGION | `string` | S3 bucket region | Required | - | `eu-west-2` |
+| NEXT_PUBLIC_S3_ENDPOINT | `string` | S3 endpoint URL | Required | - | `https://s3-hb-test.load.rs/~s3@1.0` |
+| NEXT_PUBLIC_S3_ACCESS_KEY_ID | `string` | S3 access key ID | Required | - | `PyzhuEthFmhKM367YiTP` |
+| NEXT_PUBLIC_S3_SECRET_ACCESS_KEY | `string` | S3 secret access key | Required | - | `dvfWzw4NgsM9rwjLhMp69ORoVcHmlAm0a7v2kF3j` |
+
+&nbsp;
+
 ## UI configuration
 
 ### Homepage

@@ -11,3 +11,4 @@ export { safe } from './safe';
 export { sentry } from './sentry';
 export { walletConnect } from './walletConnect';
 export { arweaveIdApi } from './arweaveApi';
+export { s3 } from './s3';

@@ -16,6 +16,7 @@ function generateCspPolicy() {
     descriptors.sentry(),
     descriptors.walletConnect(),
     descriptors.arweaveIdApi(),
+    descriptors.s3(),
   );
 
   return makePolicyString(policyDescriptor);

@@ -4,15 +4,13 @@ import React from 'react';
 import config from 'configs/app';
 import ChainIndicators from 'ui/home/indicators/ChainIndicators';
 import LatestBlocks from 'ui/home/LatestBlocks';
-import LatestZkEvmL2Batches from 'ui/home/LatestZkEvmL2Batches';
+import LatestDataItems from 'ui/home/LatestDataItems';
 import Stats from 'ui/home/Stats';
 import Transactions from 'ui/home/Transactions';
 import AdBanner from 'ui/shared/ad/AdBanner';
 import ProfileMenuDesktop from 'ui/snippets/profileMenu/ProfileMenuDesktop';
 import SearchBar from 'ui/snippets/searchBar/SearchBar';
 import WalletMenuDesktop from 'ui/snippets/walletMenu/WalletMenuDesktop';
-
-const rollupFeature = config.features.rollup;
 
 const Home = () => {
   return (
@@ -52,7 +50,10 @@ const Home = () => {
       <ChainIndicators/>
       <AdBanner mt={ 6 } mx="auto" display="flex" justifyContent="center"/>
       <Flex mt={ 6 } direction={{ base: 'column', lg: 'row' }} columnGap={ 12 } rowGap={ 6 }>
-        { rollupFeature.isEnabled && rollupFeature.type === 'zkEvm' ? <LatestZkEvmL2Batches/> : <LatestBlocks/> }
+        <Flex direction="column" rowGap={ 6 }>
+          <LatestBlocks/>
+          <LatestDataItems/>
+        </Flex>
         <Box flexGrow={ 1 }>
           <Transactions/>
         </Box>
