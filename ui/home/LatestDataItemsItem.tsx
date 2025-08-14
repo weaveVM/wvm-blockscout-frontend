@@ -51,7 +51,10 @@ const LatestDataItemsItem = ({ item, isLoading }: Props) => {
               textDecoration="none"
               _hover={{ textDecoration: 'underline' }}
             >
-              { fileName }
+              { (() => {
+                const base = (fileName || '').replace(/\.ans104$/i, '');
+                return base.length > 12 ? `${ base.slice(0, 6) }...${ base.slice(-6) }` : base;
+              })() }
             </Link>
           </Text>
         </Skeleton>
