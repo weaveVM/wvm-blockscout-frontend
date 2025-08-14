@@ -40,13 +40,12 @@ const LatestDataItemsItem = ({ item, isLoading }: Props) => {
           mr="auto"
         >
           <Text
-            fontSize="xl"
             lineHeight={ 7 }
             fontWeight={ 500 }
             isTruncated
           >
             <Link
-              href={ `https://s3-node-0.load.network/${ fileName.replace('.ans104', '') }` }
+              href={ `https://load-s3-agent.load.network/${ fileName.replace('.ans104', '') }` }
               target="_blank"
               color="link"
               textDecoration="none"
