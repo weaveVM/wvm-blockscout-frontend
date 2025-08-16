@@ -19,7 +19,13 @@ const LatestDataItems = () => {
   }
 
   if (items) {
-    const dataToShow = items.slice(0, itemsCount);
+    const sorted = [...items].sort((a, b) => {
+      const aTime = a.LastModified ? new Date(a.LastModified).getTime() : 0;
+      const bTime = b.LastModified ? new Date(b.LastModified).getTime() : 0;
+      return bTime - aTime;
+    });
+
+    const dataToShow = sorted.slice(0, itemsCount);
 
     content = (
       <VStack spacing={ 2 } overflow="hidden" alignItems="stretch">
