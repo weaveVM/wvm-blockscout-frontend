@@ -45,7 +45,7 @@ const LatestDataItemsItem = ({ item, isLoading }: Props) => {
             isTruncated
           >
             <Link
-              href={ `https://load-s3-agent.load.network/${ fileName.replace('.ans104', '') }` }
+              href={ `https://gateway.s3-node-1.load.network/resolve/${ fileName.replace('.ans104', '') }` }
               target="_blank"
               color="link"
               textDecoration="none"

@@ -31,21 +31,42 @@ export function useS3DataItems(limit = 25) {
       if (!client) {
         throw new Error('Failed to initialize S3 client');
       }
+
+      // Fetch enough items to ensure we get the newest ones
       const command = new ListObjectsV2Command({
         Bucket: 'offchain-dataitems',
         Prefix: 'dataitems/',
-        MaxKeys: limit,
+        MaxKeys: 1000,
+        FetchOwner: false,
       });
 
       const response = await client.send(command);
+
+      // eslint-disable-next-line no-console
+      console.log('S3 Response:', {
+        totalItems: response.Contents?.length,
+        items: response.Contents?.map(item => ({
+          key: item.Key,
+          lastModified: item.LastModified?.toISOString(),
+        })),
+      });
+
       if (response.Contents) {
         // Sort by last modified date, most recent first
-        const sortedItems = response.Contents.sort((a, b) => {
-          return (b.LastModified?.getTime() || 0) - (a.LastModified?.getTime() || 0);
+        const sortedItems = response.Contents
+          .sort((a, b) => {
+            return (b.LastModified?.getTime() || 0) - (a.LastModified?.getTime() || 0);
+          })
+          .slice(0, limit);
+        // eslint-disable-next-line no-console
+        console.log('Final Sorted Items:', {
+          items: sortedItems.map(item => ({
+            key: item.Key,
+            lastModified: item.LastModified?.toISOString(),
+          })),
         });
         setItems(sortedItems);
       }
-
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Failed to fetch S3 items'));
@@ -56,6 +77,9 @@ export function useS3DataItems(limit = 25) {
 
   useEffect(() => {
     fetchItems();
+    // Refetch every 30 seconds to keep the list updated
+    const interval = setInterval(fetchItems, 30000);
+    return () => clearInterval(interval);
   }, [ fetchItems ]);
 
   return {
